@@ -104,13 +104,14 @@ aws configure
 
 # Install PS Modules
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-Install-Module posh-git, oh-my-posh, psake -Force
+Install-Module posh-git, psake -Force
 
 
 # Update PS Profile
+# add oh-my-posh later 
+# oh-my-posh --init --shell pwsh --config `$env:POSH_THEMES_PATH/hunk.omp.json | Invoke-Expression
 $myprof = @"
 `$githome = '$gitDir'
-oh-my-posh --init --shell pwsh --config `$env:POSH_THEMES_PATH/hunk.omp.json | Invoke-Expression
 set-location `$gitHome
 "@
 New-Item -Path $profile -ItemType file -Value $myprof
